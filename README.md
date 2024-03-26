@@ -1,1 +1,1 @@
-Code will be released here after paper is published.
+Code will be released once paper is published.
