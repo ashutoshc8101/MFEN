@@ -2,8 +2,8 @@
 exp_name: mfen
 
 # Dataset paths
-train_dataset: ./uieb_data/
-test_dataset: ./uieb_data/
+train_dataset: ./data/uieb_data/
+test_dataset: ./data/uieb_data/
 
 # Training parameters
 crop_size: 256

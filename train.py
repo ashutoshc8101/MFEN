@@ -10,10 +10,10 @@ from torchvision.utils import save_image
 import yaml
 import argparse
 
-from .models.mfen import MFEN
-from .datasets.uieb_dataset import UIEBDataset, UIEBUnpairedDataset
-from .losses.perceptual_loss import MultiVGGPerceptualLoss
-from .utils.metrics import PSNR, SSIM
+from models.mfen import MFEN
+from datasets.uieb_dataset import UIEBDataset, UIEBUnpairedDataset
+from losses.perceptual_loss import MultiVGGPerceptualLoss
+from utils.metrics import PSNR, SSIM
 
 def make_directory(dir_path):
     if not os.path.exists(dir_path):
@@ -112,20 +112,20 @@ def main(args):
 
     # Create datasets
     train_dataset = UIEBDataset(
-        train_dataset=config['train_dataset'],
+        train_dataset=os.path.abspath(config['train_dataset']),
         crop_size=config['crop_size'],
-        test_dataset=config['test_dataset']
+        test_dataset=os.path.abspath(config['test_dataset'])
     )
 
     val_dataset = UIEBDataset(
-        train_dataset=config['train_dataset'],
+        train_dataset=os.path.abspath(config['train_dataset']),
         crop_size=config['crop_size'],
-        test_dataset=config['test_dataset'],
+        test_dataset=os.path.abspath(config['test_dataset']),
         mode='valid'
     )
 
     test_dataset = UIEBUnpairedDataset(
-        train_dataset=config['train_dataset'],
+        train_dataset=os.path.abspath(config['train_dataset']),
         crop_size=config['crop_size']
     )
 
